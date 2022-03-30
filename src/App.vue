@@ -19,6 +19,9 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "@/assets/style/my-style.scss"; 
+  @import "@/assets/style/my-style.scss";  
+  #app{
+    background-color: rgb(30, 45, 59);
+  }
 
 </style>

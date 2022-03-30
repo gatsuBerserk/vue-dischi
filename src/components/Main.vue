@@ -1,24 +1,36 @@
 <template>
   <div>
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-12">
+                  <h1>Prova</h1>
+                  <DiscPage/> 
+              </div>
+          </div>
+      </div>
       
-      <DiscPage/> 
       
       
   </div>
 </template>
 
 <script> 
+// import axios from "axios";
 import DiscPage from "./DiscPage.vue"
 
 export default {
     name: "MainPage", 
     components: { 
-        DiscPage,
-        
-  }
+        DiscPage,   
+  },
 }
 </script>
 
 <style lang="scss" scoped>
- @import "@/style/my-style.scss";
+ @import "../assets/style/my-style.scss";  
+
+ h1{
+     color: white;
+ }
+
 </style>
