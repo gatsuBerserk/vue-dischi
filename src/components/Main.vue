@@ -1,23 +1,28 @@
 <template>
   <div>
       <div class="container-fluid">
-          <div class="row">
+          <div class="row" v-if="DiscsList">
               <div class="col-6 d-flex justify-content-center" v-for="(element, index) in DiscsList"
                     :key="index">
                   <DiscPage 
                     :discObject="element"/> 
               </div>
-          </div>
-      </div>
-      
-      
-      
-  </div>
+          </div> 
+          <div class="row position-absolute top-50 start-50 translate-middle" v-else>
+                <div class="col-12 ">
+                    <div class="animate__animated animate__bounce animate__repeat-3">
+                        <span class="fs-1 fw-bold text-warning" >Arrivo.....DAMMI TEMPO!</span>
+                    </div>  
+                </div>
+            </div>  
+        </div>     
+    </div>
 </template>
 
 <script> 
 import axios from "axios";
-import DiscPage from "./DiscPage.vue"
+import DiscPage from "./DiscPage.vue" 
+
 
 export default {
     name: "MainPage", 
@@ -26,11 +31,12 @@ export default {
   },
   data: function(){
       return{
-          DiscsList: "",
+          DiscsList: null,
       }
   }, 
-  created:function(){
-      this.getApiDiscs()
+  created:function(){ 
+      setTimeout(this.getApiDiscs, 3000)
+      
   },
   methods: {
       getApiDiscs(){
