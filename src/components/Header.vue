@@ -3,13 +3,13 @@
     <nav class="navbar navbar-light my-bg">
       <div class="container-fluid">
         <img src="../assets/img/logo.svg" alt="">
-        <select class="form-select my-select" aria-label="Default select example">
-          <option selected>Select for...</option>
-          <option value="element" v-for="(element, index) in genre" :key="index">{{genre[index]}}</option>
+        <select v-model="selectGenre" class="form-select my-select" aria-label="Default select example"  @change="$emit('selezione',selectGenre)">
+          <option disable value="">Select for...</option>
+          <option   :value="genre[index]" v-for="(element, index) in genre" :key="index">{{genre[index]}} </option>
         </select>
       </div>  
   </nav> 
-  
+      <h1 class="text-white">hai selezionato: {{selectGenre}}</h1>
   </div>
 </template>
 
@@ -17,6 +17,11 @@
 export default { 
   name : "HeaderPage", 
   props: ["genre"],
+  data : function(){
+    return{
+      selectGenre:"",
+    }
+  }
 }
 </script>
 

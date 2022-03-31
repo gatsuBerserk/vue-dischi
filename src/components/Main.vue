@@ -1,13 +1,15 @@
 <template>
   <div>  
-      <Header
+      <Header 
+      @selezione="selection"
       :genre="genre"/>
       <div class="container-fluid">
           <div class="row" v-if="DiscsList">
-              <div class="col-6 d-flex justify-content-center" v-for="(element, index) in DiscsList"
+              <div class="col-6 d-flex justify-content-center" v-for="(element, index) in genereSelezionato"
                     :key="index"> 
                 
                   <DiscPage 
+                    :genere="genereSelezionato"
                     :discObject="element"/> 
               </div>
           </div> 
@@ -32,13 +34,13 @@ export default {
     name: "MainPage", 
     components: {
         Header, 
-        DiscPage, 
-            
+        DiscPage,        
   },
   data: function(){
       return{
           DiscsList: null, 
-          genre : [],  
+          genre : [], 
+          genereSelezionato:"" 
       }
   }, 
   created:function(){ 
@@ -69,7 +71,13 @@ export default {
             .catch((error) =>{
                 console.log(error);
             })
-        }
+        }, 
+
+        selection: function (selectGenre){ 
+            console.log(selectGenre + " header") 
+            this.genereSelezionato= selectGenre; 
+            return this.DiscsList.filter((element) => element.genre.includes(selectGenre)
+            )},
     },         
 }
 </script>

@@ -1,5 +1,5 @@
-<template>
-    <div class="card mb-3 my-color text-white m-3" style="max-width: 540px;">
+<template> 
+    <div class="card mb-3 my-color text-white m-3" style="max-width: 540px;"> 
       <div class="row g-0">
           <div class="col-md-4 p-3">
             <img :src="discObject.poster" class="img-fluid rounded-start" alt="discObject.author">
@@ -19,7 +19,13 @@
 <script>
 export default { 
     name : "DiscPage", 
-    props: ["discObject"], 
+    props: ["discObject", 
+            "genre"], 
+    computed: {
+      ricerca: function(){
+        return this.discObject.filter((element) => element.genre.toLowerCase().includes(this.gerne)
+        )}
+    }
 }
 </script>
 
