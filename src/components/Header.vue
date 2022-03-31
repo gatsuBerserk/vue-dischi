@@ -5,8 +5,7 @@
         <img src="../assets/img/logo.svg" alt="">
         <select class="form-select my-select" aria-label="Default select example">
           <option selected>Select for...</option>
-          <option value="genre">Genere</option>
-          <option value="artist">Artist</option>
+          <option value="element" v-for="(element, index) in genre" :key="index">{{genre[index]}}</option>
         </select>
       </div>  
   </nav> 
@@ -16,7 +15,8 @@
 
 <script>
 export default { 
-  name : "HeaderPage"
+  name : "HeaderPage", 
+  props: ["genre"],
 }
 </script>
 

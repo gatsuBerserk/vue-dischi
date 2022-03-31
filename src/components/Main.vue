@@ -1,6 +1,7 @@
 <template>
   <div>  
-      <Header/>
+      <Header
+      :genre="genre"/>
       <div class="container-fluid">
           <div class="row" v-if="DiscsList">
               <div class="col-6 d-flex justify-content-center" v-for="(element, index) in DiscsList"
@@ -29,13 +30,15 @@ import Header from "./Header.vue"
 
 export default {
     name: "MainPage", 
-    components: { 
+    components: {
+        Header, 
         DiscPage, 
-        Header,    
+            
   },
   data: function(){
       return{
-          DiscsList: null,
+          DiscsList: null, 
+          genre : [],  
       }
   }, 
   created:function(){ 
@@ -47,14 +50,27 @@ export default {
           axios.get("https://flynn.boolean.careers/exercises/api/array/music") 
             .then((response) => { 
                 this.DiscsList = response.data.response; 
-                console.table(this.DiscsList);
+                console.table(this.DiscsList);  
+                
+                // creo un nuovo array che contiene i generi musicali
+                this.DiscsList.forEach(element => { 
+                    // se non contiene già il genere
+                    if (!this.genre.includes(element.genre)) {
+                           console.log(this.genre) 
+                            //pusha genere 
+                           this.genre.push(element.genre)                             
+                    }
+                    
+                });
+
+              
             }) 
             // in caso qualcosa non funzionasse 
             .catch((error) =>{
                 console.log(error);
             })
         }
-    }
+    },         
 }
 </script>
 
