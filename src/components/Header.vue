@@ -3,15 +3,20 @@
     <nav class="navbar navbar-light my-bg">
       <div class="container-fluid">
         <img src="../assets/img/logo.svg" alt="">
-      </div>
-  </nav>
+        <select class="form-select my-select" aria-label="Default select example">
+          <option selected>Select for...</option>
+          <option value="genre">Genere</option>
+          <option value="artist">Artist</option>
+        </select>
+      </div>  
+  </nav> 
+  
   </div>
 </template>
 
 <script>
 export default { 
-  name : "HeaderPage",
-
+  name : "HeaderPage"
 }
 </script>
 
@@ -20,8 +25,11 @@ export default {
   .my-bg{
     background-color:rgb(46, 58, 70) ;
   } 
-
   img{
     height: 50px;
+  } 
+
+  .my-select{
+    width: 20%;
   }
 </style>

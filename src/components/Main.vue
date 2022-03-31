@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div>  
+      <Header/>
       <div class="container-fluid">
           <div class="row" v-if="DiscsList">
               <div class="col-6 d-flex justify-content-center" v-for="(element, index) in DiscsList"
-                    :key="index">
+                    :key="index"> 
+                
                   <DiscPage 
                     :discObject="element"/> 
               </div>
@@ -22,12 +24,14 @@
 <script> 
 import axios from "axios";
 import DiscPage from "./DiscPage.vue" 
+import Header from "./Header.vue" 
 
 
 export default {
     name: "MainPage", 
     components: { 
-        DiscPage,   
+        DiscPage, 
+        Header,    
   },
   data: function(){
       return{
